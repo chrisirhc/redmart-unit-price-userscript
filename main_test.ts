@@ -1,6 +1,6 @@
 import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.34-alpha/deno-dom-wasm.ts";
 import { assertEquals } from "https://deno.land/std@0.155.0/testing/asserts.ts";
-import { getProductElements, getProductPrice } from "./main.ts";
+import { getProductElements, getProductPrice, getProductQuantity } from "./main.ts";
 
 const fixtureHtml = Deno.readTextFileSync("./fixture.html");
 const doc = new DOMParser().parseFromString(fixtureHtml, "text/html");
@@ -18,4 +18,9 @@ Deno.test(function getProductsTest() {
   assertEquals(productPrices.length, 2);
   assertEquals(productPrices[0], "12.95");
   assertEquals(productPrices[1], "10.74");
+
+  const productQuantities = products.map(getProductQuantity);
+  assertEquals(productQuantities.length, 2);
+  assertEquals(productQuantities[0], "20");
+  assertEquals(productQuantities[1], "24");
 });

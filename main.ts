@@ -24,3 +24,16 @@ export function getProductPrice(productElement: Element) {
   const priceString = priceElement.textContent.substring(1);
   return priceString;
 }
+
+export function getProductQuantity(productElement: Element) {
+  const weightElement = productElement.querySelector(
+    ".RedmartProductCard-weight"
+  );
+  
+  if (!weightElement) {
+    return;
+  }
+  const quantityString = weightElement.textContent.split(' ')[0];
+  return quantityString;
+}
+
