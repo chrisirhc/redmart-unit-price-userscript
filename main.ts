@@ -14,6 +14,17 @@ export function getProductElements(queryable: Document): Element[] {
   return elements;
 }
 
+export function getProductUnitPrice(productElement: Element) {
+  const priceString = getProductPrice(productElement);
+  const quantityString = getProductQuantity(productElement);
+
+  if (!priceString || !quantityString) {
+    return;
+  }
+
+  return +priceString / +quantityString;
+}
+
 export function getProductPrice(productElement: Element) {
   const priceElement = productElement.querySelector(
     ".RedmartProductCard-price"
