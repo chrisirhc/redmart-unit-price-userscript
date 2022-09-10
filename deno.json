@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "bundle": "deno run --allow-read --allow-write=build/ --allow-env=ESBUILD_BINARY_PATH,HOME --allow-run scripts/bundle.ts"
+  }
+}
