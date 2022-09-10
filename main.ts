@@ -14,6 +14,28 @@ export function getProductElements(queryable: Document): Element[] {
   return elements;
 }
 
+export function insertUnitPrice(
+  doc: Document,
+  productElement: Element,
+  unitPrice: number
+) {
+  const priceContainerElement = productElement.querySelector(
+    ".RedmartProductCard-priceContainer"
+  );
+  const priceElement = productElement.querySelector(
+    ".RedmartProductCard-price"
+  );
+
+  if (!priceContainerElement || !priceElement) {
+    // Silently fail :/
+    return;
+  }
+
+  const newSpanElement = doc.createElement("span");
+  newSpanElement.textContent = `$${unitPrice}`;
+  priceContainerElement.insertBefore(newSpanElement, priceElement);
+}
+
 export function getProductUnitPrice(productElement: Element) {
   const priceString = getProductPrice(productElement);
   const quantityString = getProductQuantity(productElement);
