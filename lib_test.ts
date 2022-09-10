@@ -9,7 +9,7 @@ import {
   getProductQuantity,
   getProductUnitPrice,
   insertUnitPrice,
-} from "./main.ts";
+} from "./lib.ts";
 
 const fixtureHtml = Deno.readTextFileSync("./fixture.html");
 const doc = new DOMParser().parseFromString(fixtureHtml, "text/html");
